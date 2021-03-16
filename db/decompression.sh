@@ -1,0 +1,1 @@
+lz4 -d master.mdb.lz4
