@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 #RE: public static class GameDefine {}
 RESOURCE_SERVER_URL = 'https://prd-storage-umamusume.akamaized.net/dl/resources'
-PLATFORM = 'Android' #'iOS' for iOS / 'Windows' for DMM
+PLATFORM = '/Android' #'/iOS' for iOS / '/Windows' for DMM
 ASSETBUNDLES = RESOURCE_SERVER_URL + PLATFORM + '/assetbundles/{0:.2}/{0}'
 GENERIC = RESOURCE_SERVER_URL + '/Generic/{0:.2}/{0}'
 MANIFEST = RESOURCE_SERVER_URL + '/Manifest/{0:.2}/{0}'
