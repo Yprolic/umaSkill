@@ -7,6 +7,10 @@ import timeit
 import tqdm
 import shutil
 import sys
+from datetime import datetime
+
+META_PATH = 'db/meta'
+CSV_STR = '%Y%m%d.csv'
 
 if sys.version_info[0] == 3 and sys.version_info[1] >= 8 and sys.platform.startswith('win'):
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
@@ -63,8 +67,12 @@ async def main(new_csv: str, old_csv: str, folder_name: str, filter_str: str, ht
 
 if __name__ == '__main__':
     #--Default--
-    new = 'db/meta/20210330.csv'
-    old = 'db/meta/20210329.csv' # None
+    date_list = list(map(lambda x : datetime.strptime(x, CSV_STR), os.listdir(META_PATH))).sort()
+    new = old = None
+    if len(date_list) > 1:
+        old = os.path.join(META_PATH, date_list[-2].strftime(CSV_STR))
+    if len(date_list) > 0:
+        new = os.path.join(META_PATH, date_list[-1].strftime(CSV_STR))
     folder_name = 'data'
     filter_str = None
     http_proxy = 'http://127.0.0.1:10809' # Change this
