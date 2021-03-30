@@ -63,8 +63,8 @@ async def main(new_csv: str, old_csv: str, folder_name: str, filter_str: str, ht
 
 if __name__ == '__main__':
     #--Default--
-    new = 'newmeta.csv'
-    old = 'oldmeta.csv' # None
+    new = 'db/meta/20210330.csv'
+    old = 'db/meta/20210329.csv' # None
     folder_name = 'data'
     filter_str = None
     http_proxy = 'http://127.0.0.1:10809' # Change this

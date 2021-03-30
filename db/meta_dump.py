@@ -1,5 +1,6 @@
 import sqlite3
 import csv
+from argparse import ArgumentParser
 from dataclasses import dataclass
 
 #RE: public static class GameDefine {}
@@ -71,5 +72,15 @@ def exportCSV(dblist: list, filepath: str):
             csv_writer.writerow([db_row, db_row.getUrl()])
     
 if __name__ == '__main__':
-    dblist = readDB('db/meta')
-    exportCSV(dblist, 'meta.csv')
+    #--Default--
+    meta_path = 'db/meta/meta(3)'
+    output_path = 'db/meta/20210330.csv'
+    #--Default--
+    
+    parser = ArgumentParser(description='Dump name-url list as csv from meta db.')
+    parser.add_argument('-i', type=str, help='Path of meta db', default=meta_path)
+    parser.add_argument('-o', type=str, help='Output destination', default=output_path)
+    args = parser.parse_args()
+
+    dblist = readDB(args.i)
+    exportCSV(dblist, args.o)
