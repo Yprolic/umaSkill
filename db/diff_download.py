@@ -67,7 +67,8 @@ async def main(new_csv: str, old_csv: str, folder_name: str, filter_str: str, ht
 
 if __name__ == '__main__':
     #--Default--
-    date_list = list(map(lambda x : datetime.strptime(x, CSV_STR), os.listdir(META_PATH))).sort()
+    date_list = list(map(lambda x : datetime.strptime(x, CSV_STR), os.listdir(META_PATH)))
+    date_list.sort()
     new = old = None
     if len(date_list) > 1:
         old = os.path.join(META_PATH, date_list[-2].strftime(CSV_STR))
