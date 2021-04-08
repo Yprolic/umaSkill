@@ -36,4 +36,4 @@ jobs:
         prerelease: true
         title: "Test"
         files: |
-          "data.tgz"
+          data.tgz
