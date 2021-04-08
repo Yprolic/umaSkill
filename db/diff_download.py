@@ -76,7 +76,7 @@ if __name__ == '__main__':
         new = os.path.join(META_PATH, date_list[-1].strftime(CSV_STR))
     folder_name = 'data'
     filter_str = None
-    http_proxy = 'http://127.0.0.1:10809' # Change this
+    http_proxy = None
     #--Default--
     
     parser = ArgumentParser(description='Diff between versions and download the assets.')
