@@ -25,14 +25,10 @@ jobs:
     - name: Download diff file
       run: |
         python db/diff_download.py
-    - name: Upload
-      uses: actions/upload-artifact@v2
-      with:
-        path: data
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         files: "data/**"
-        tag_name: "v1.0.0"
+        name: "v1.0.0"
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
