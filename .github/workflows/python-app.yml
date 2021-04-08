@@ -25,6 +25,9 @@ jobs:
     - name: Download diff file
       run: |
         python db/diff_download.py
+    - name: Tgz
+      run: |
+        tar zcvf data.tgz data
     - name: Release
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
@@ -33,4 +36,4 @@ jobs:
         prerelease: true
         title: "Test"
         files: |
-          "data/**"
+          "data.tgz"
