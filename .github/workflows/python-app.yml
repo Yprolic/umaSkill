@@ -25,13 +25,15 @@ jobs:
     - name: Download diff file
       run: |
         python db/diff_download.py
-    - name: Upload
-      uses: actions/upload-artifact@v2
-      with:
-        path: data
+    - name: Tgz
+      run: |
+        tar zcvf data.tgz data
     - name: Release
-      uses: softprops/action-gh-release@v0.1.5
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        files: "data/**"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Test"
+        files: |
+          data.tgz
